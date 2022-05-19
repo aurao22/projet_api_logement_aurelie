@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="UTF-8" />
+        <title>Prédiction du prix des logements Californiens</title>
+    
+        <!-- Pour appeler des API en javascipt -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+        <!-- Code d'appel de notre API -->
+        <link rel="stylesheet" type="text/css" href="/static/dashboard.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/novus/nvd3/v1.8.1/build/nv.d3.css">
+    
+      </head>
+    <body>
+      <div class="content">
+        <header>
+          <div class="title">
+            <h1 >
+              <table>
+                <tr>
+                  <td>
+                    <a href="/">
+                      <img src="/static/illustration-california-color2.png" width="80%" height="80%">
+                    </a>
+                  </td>
+                  <td>
+                    Prédiction du prix des logements en Californie
+                  </td>
+                </tr>
+              </table>
+            </h1>
+          </div>
+        </header>
+      <main>
+        <div class="chartContainer">
+          <table>
+            <tr>
+              <td>Revenu médian dans le secteur :</td>
+              <td></td>
+              <td>{{revenu_median}} (en 10K $ dollars)&nbsp;</td>
+            </tr>
+            <tr>
+              <td>Age médian des logements dans le secteur :</td>
+              <td></td>
+              <td>{{age_median}} ans&nbsp;</td>
+            </tr>
+            <tr>
+              <td>Nombre moyen de pièces :</td>
+              <td></td>
+              <td>{{nb_room_mean}} pièces &nbsp;</td>
+            </tr>
+            <tr>
+              <td>Nombre moyen de chambres :</td>
+              <td></td>
+              <td>{{nb_bedroom_mean}} chambres &nbsp;</td>
+            </tr>
+            <tr>
+              <td>Population dans le secteur :</td>
+              <td></td>
+              <td>{{population}} habitants &nbsp;</td>
+            </tr>
+            <tr>
+              <td>Occupation moyenne des logements :</td>
+              <td></td>
+              <td>{{occupation_mean}} habitants / logement &nbsp;</td>
+            </tr>
+            <tr>
+              <td>Latitude :</td>
+              <td></td>
+              <td>{{latitude}} ° &nbsp;</td>
+            </tr>
+            <tr>
+              <td>Longitude :</td>
+              <td></td>
+              <td>{{longitude}} ° &nbsp;</td>
+            </tr>
+            <tr>
+              <td><b>Prix estimé :</b></td>
+              <td></td>
+              <td><b>{{say}} (en 10K $ dollars) &nbsp;</b></td>
+            </tr>
+          </table>
+        </div>
+      </main>
+    </body>
+  </html>

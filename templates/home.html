@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Prédiction du prix des logements Californiens</title>
+
+    <!-- Pour appeler des API en javascipt -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <!-- Code d'appel de notre API -->
+    <script src="/static/california_prediction.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/static/dashboard.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/novus/nvd3/v1.8.1/build/nv.d3.css">
+
+  </head>
+
+  <body>
+
+    <div class="content">
+      <header>
+        <div class="title">
+          <h1 >
+            <table>
+              <tr>
+                <td>
+                  <a href="/">
+                    <img src="/static/illustration-california-color2.png" width="80%" height="80%">
+                  </a>
+                </td>
+                <td>
+                  Prédiction du prix des logements en Californie
+                </td>
+              </tr>
+            </table>
+          </h1>
+        </div>
+      </header>
+
+      <main>
+        <div class="chartContainer">
+            <table>
+              <tr>
+                <form method="POST" action="{{ url_for('hello') }}">
+                <!-- <form action="/predict" method="POST"> -->
+                  <td>
+                    <div id="prediction" class="form">
+                        <table>
+                          <tr>
+                            <td>Revenu médian dans le secteur :</td>
+                            <td></td>
+                            <td><input id="revenu_median" name="revenu_median" value="9.87" > K$ (en 10K $ dollars)&nbsp;</input></td>
+                          </tr>
+                          <tr>
+                            <td>Age médian des logements dans le secteur :</td>
+                            <td></td>
+                            <td><input id="age_median" name="age_median" value='150' > ans&nbsp;</input></td>
+                          </tr>
+                          <tr>
+                            <td>Nombre moyen de pièces :</td>
+                            <td></td>
+                            <td><input id="nb_room_mean" name="nb_room_mean" value='7' > pièces &nbsp;</input></td>
+                          </tr>
+                          <tr>
+                            <td>Nombre moyen de chambres :</td>
+                            <td></td>
+                            <td><input id="nb_bedroom_mean" name="nb_bedroom_mean" value='3' > chambres &nbsp;</input></td>
+                          </tr>
+                          <tr>
+                            <td>Population dans le secteur :</td>
+                            <td></td>
+                            <td><input id="population" name="population" value='1425' > habitants &nbsp;</input></td>
+                          </tr>
+                          <tr>
+                            <td>Occupation moyenne des logements :</td>
+                            <td></td>
+                            <td><input id="occupation_mean" name="occupation_mean" value='3' > habitants / logement &nbsp;</input></td>
+                          </tr>
+                          <tr>
+                            <td>Latitude :</td>
+                            <td></td>
+                            <td><input id="latitude" name="latitude" value='35' > ° &nbsp;</input></td>
+                          </tr>
+                          <tr>
+                            <td>Longitude :</td>
+                            <td></td>
+                            <td><input id="longitude" name="longitude" value='-119' > ° &nbsp;</input></td>
+                          </tr>
+                          <!-- <tr>
+                            <td colspan="3">
+                              <button type="submit">Prédire le prix moyen</button>
+                            </td>
+                          </tr> -->
+                        </table>
+                      </div>
+                  </td>
+                  <td>
+                      <button type="submit" class="button"><b>Prédire le prix moyen &rarr;</b></button>
+                  </td>
+                </form>
+                <td>
+                  <div id="resultat_prediction" class="prediction_resultat">
+                    <p>
+                      <!-- Afficher le résultat de la prédiction -->
+                      <script>
+
+                        var parameters = location.search.substring(1).split("&");
+                        console.log("parameters:" + parameters)
+                        if (parameters == null || parameters.length==0){
+                          document.write("Cliquez sur le bouton pour estimer le prix du logement.");
+                        }else{
+                          
+                          var temp = parameters[0].split("=");
+                          console.log("temp:"+temp)
+                          if(temp == null){
+                            document.write("Cliquez sur le bouton pour estimer le prix du logement..");
+
+                          }else{
+                            prediction = unescape(temp[1]);
+                            console.log("prediction:"+prediction)
+                            if(prediction == null || prediction == 'undefined'){
+                              document.write("Cliquez sur le bouton pour estimer le prix du logement...");
+                            }else {
+                              document.write(prediction);
+                            }
+                          }
+                        }
+                      </script>
+                    </p>
+                  </div>
+                </td>
+              </tr>
+            </table>
+        </div>
+
+      </main>
+    </div>
+
+  </body>
+</html>
