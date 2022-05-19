@@ -26,6 +26,8 @@ print(f"mlflow models serve -m {nom_model}/ --env-manager=local") # Sans conda
 
 ## 2. Lancer le serveur ML Flow
 
+Se positionner dans le répertoire du projet
+
 ```python
 # avec conda
 print(f"mlflow models serve -m {nom_model}/") 
@@ -34,6 +36,8 @@ print(f"mlflow models serve -m {nom_model}/ --env-manager=local")
 ```
 
 ## 3. Lancer le serveur avec l'UI
+
+Se positionner dans le répertoire du projet
 
 ```python
 print('streamlit run myfile.py')
